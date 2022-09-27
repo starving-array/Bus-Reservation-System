@@ -1,4 +1,4 @@
-package com.reservation.service;
+package com.reservation.service.RouteService;
 
 public class RouteServiceImpl implements RouteService {
 

@@ -1,4 +1,4 @@
-package com.reservation.service;
+package com.reservation.service.UserService;
 
 public class UserServiceImpl implements UserService {
 
