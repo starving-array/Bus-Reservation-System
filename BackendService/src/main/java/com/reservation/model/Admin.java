@@ -1,8 +1,5 @@
 package com.reservation.model;
 
-
-
-
 public class Admin {
 
 	private Integer adminId;
