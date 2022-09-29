@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.reservation.exceptions.ResvervationException;
 import com.reservation.model.reservation.Reservation;
 import com.reservation.repository.ReservationDao;
 
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
