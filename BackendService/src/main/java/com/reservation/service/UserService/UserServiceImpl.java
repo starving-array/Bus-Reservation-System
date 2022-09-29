@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.reservation.exceptions.UserException;
 import com.reservation.model.User.User;
 import com.reservation.repository.UserDao;
 

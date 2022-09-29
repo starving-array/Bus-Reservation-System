@@ -2,6 +2,7 @@ package com.reservation.service.UserService;
 
 import java.util.List;
 
+import com.reservation.exceptions.UserException;
 import com.reservation.model.User.User;
 
 public interface UserService {

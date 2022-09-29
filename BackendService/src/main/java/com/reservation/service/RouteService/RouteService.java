@@ -1,8 +1,9 @@
 package com.reservation.service.RouteService;
 
-import com.reservation.model.Route.Route;
+import java.util.List;
 
-import java.util.*;
+import com.reservation.exceptions.RouteException;
+import com.reservation.model.Route.Route;
 
 public interface RouteService {
 	
@@ -14,6 +15,6 @@ public interface RouteService {
 	
 	public Route viewRoute(Integer routeId) throws RouteException;
 	
-	public List<Route> viewAllRoute(Route route) throws RouteException;
+	public List<Route> viewAllRoute() throws RouteException;
 
 }

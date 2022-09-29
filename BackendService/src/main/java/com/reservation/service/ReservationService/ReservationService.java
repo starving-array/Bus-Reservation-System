@@ -3,6 +3,7 @@ package com.reservation.service.ReservationService;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.reservation.exceptions.ResvervationException;
 import com.reservation.model.reservation.Reservation;
 
 public interface ReservationService {

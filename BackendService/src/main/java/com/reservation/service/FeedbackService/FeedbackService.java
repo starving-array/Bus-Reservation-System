@@ -2,6 +2,7 @@ package com.reservation.service.FeedbackService;
 
 import java.util.List;
 
+import com.reservation.exceptions.FeedBackException;
 import com.reservation.model.Feedback.Feedback;
 
 public interface FeedbackService {

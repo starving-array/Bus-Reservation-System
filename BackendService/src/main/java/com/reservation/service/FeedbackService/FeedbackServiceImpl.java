@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.reservation.exceptions.FeedBackException;
 import com.reservation.model.Feedback.Feedback;
 import com.reservation.repository.FeedbackDao;
 
