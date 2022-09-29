@@ -1,5 +1,11 @@
 package com.reservation.repository;
 
-public interface UserDao {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.reservation.model.User.User;
+
+@Repository
+public interface UserDao extends JpaRepository<User, Integer> {
 
 }
