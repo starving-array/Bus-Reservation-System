@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.reservation.exceptions.FeedBackException;
 import com.reservation.model.Feedback.Feedback;
 import com.reservation.repository.FeedbackDao;
 
+@Service
 public class FeedbackServiceImpl implements FeedbackService {
 
 	@Autowired
@@ -34,7 +36,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	public Feedback viewFeedBack(int feedbackid) throws FeedBackException {
 		Optional<Feedback> feedOpt = feedDao.findById(feedbackid);
 		if (feedOpt.isPresent()) {
-			return feedDao.get();
+			return feedOpt.get();
 		} else {
 			throw new FeedBackException("No data exists with this id" + feedbackid);
 		}
