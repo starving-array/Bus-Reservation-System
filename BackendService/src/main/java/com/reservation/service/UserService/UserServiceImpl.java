@@ -17,23 +17,30 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public User addUser(User user) {
+	public User addUser(User user)throws UserException{
 		User savuser= userDao.save(user);//throw exception by user Exit or Not by Mobile and UserEmail
-		return savuser;
+		
+		Optional<User> opt =userDao.findById(savuser.getUserLoginId());
+		if(opt.isPresent()) {
+			return opt.get();
+		}else {
+			throw new UserException("User Does Not Register Please Register Agian");
+		}
+		
 	}
 
 	@Override
-	public User updateUser(User user) {
+	public User updateUser(User user)throws UserException {
 		Optional<User> opt=userDao.findById(user.getUserLoginId());
 		if(opt.isPresent()) {
 			return userDao.save(user);
 		}else {
-			throw new UserException("User IS Not Persent With This User ID  : "+emp.getuserId());
+			throw new UserException("User IS Not Persent With This User ID  : "+user.getUserLoginId());
 		}
 	}
 
 	@Override
-	public User deleteUser(Integer userId) {
+	public User deleteUser(Integer userId) throws UserException{
 		Optional<User> opt=userDao.findById(userId);
 		if(opt.isPresent()) {
 			User userDeleted=opt.get();
@@ -45,7 +52,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User viewUser(Integer userId) {
+	public User viewUser(Integer userId) throws UserException{
 		Optional<User> opt=userDao.findById(userId);
 		if(opt.isPresent()) {
 			return opt.get();
@@ -55,7 +62,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> viewAllUser() {
+	public List<User> viewAllUser() throws UserException{
 		List<User> listOfAllUser=userDao.findAll();
 		if(listOfAllUser.size()>0) {
 			return listOfAllUser;
