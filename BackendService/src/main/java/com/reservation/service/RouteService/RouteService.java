@@ -1,6 +1,6 @@
 package com.reservation.service.RouteService;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.reservation.exceptions.BusException;
@@ -22,6 +22,6 @@ public interface RouteService {
 	public List<Route> viewAllRoute() throws RouteException;
 
 	// user search 
-	public List<bookingDiary> getRouteIdbySourceDestinationJourneyDate(String source, String destination, LocalDateTime date) throws RouteException, BusException, bookingException;
+	public List<bookingDiary> getRouteIdbySourceDestinationJourneyDate(String source, String destination, LocalDate date) throws RouteException, BusException, bookingException;
 
 }

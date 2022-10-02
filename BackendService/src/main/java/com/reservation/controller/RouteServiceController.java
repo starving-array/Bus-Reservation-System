@@ -1,6 +1,6 @@
 package com.reservation.controller;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,7 @@ public class RouteServiceController {
 	@GetMapping("/search/{source}/{destination}/{JourneyDate}")
 	public ResponseEntity<List<bookingDiary>> getRouteIdbySourceDestinationJourneyDate(
 			@PathVariable("source") String source, @PathVariable("destination") String destination,
-			@PathVariable("JourneyDate") LocalDateTime journeyDate)
+			@PathVariable("JourneyDate") LocalDate journeyDate)
 			throws RouteException, BusException, bookingException {
 		List<bookingDiary> list = rService.getRouteIdbySourceDestinationJourneyDate(source, destination, journeyDate);
 		return new ResponseEntity<List<bookingDiary>>(list, HttpStatus.OK);

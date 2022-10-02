@@ -51,7 +51,7 @@ public class ReservationServiceImpl implements ReservationService {
 		newReservation.setReservationStatus("booked");
 		newReservation.setReservationDate(LocalDateTime.now().toLocalDate());
 		newReservation.setReservationTime(LocalDateTime.now().toLocalTime());
-		newReservation.setJourneyDate(diaryLog.getJourneyDate_bookingDiary().toLocalDate());
+		newReservation.setJourneyDate(diaryLog.getJourneyDate_bookingDiary());
 
 		// get route detail with route id
 		Optional<Route> opt = routedao.findById(diaryLog.getTravel_route_id());

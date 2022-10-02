@@ -1,6 +1,6 @@
 package com.reservation.model.bookingDiary;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class bookingDiary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer bookingDiaryId;
-	private LocalDateTime journeyDate_bookingDiary;
+	private LocalDate journeyDate_bookingDiary;
 
 	private Integer bus_id;
 

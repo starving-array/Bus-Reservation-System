@@ -1,6 +1,6 @@
 package com.reservation.service.RouteService;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -99,7 +99,7 @@ public class RouteServiceImpl implements RouteService {
 	// search data for user based on source destination and dataofJourney
 	@Override
 	public List<bookingDiary> getRouteIdbySourceDestinationJourneyDate(String source, String destination,
-			LocalDateTime journeyDate) throws RouteException, BusException, bookingException {
+			LocalDate journeyDate) throws RouteException, BusException, bookingException {
 		List<bookingDiary> selectedBusForUser = new ArrayList<>(); // answer to show on search for user/ presentation
 
 		// get the route id with matching destination
@@ -122,7 +122,7 @@ public class RouteServiceImpl implements RouteService {
 
 			if (listOfBus.size() == 0) {
 				throw new BusException("No buses avaliable now from " + source + " to " + destination + " for "
-						+ journeyDate.toLocalDate());
+						+ journeyDate);
 			} else {
 				// this will hold record for those buses who are already accepted a few booking and registered on the diary
 				selectedBusForUser = getRouteIdbySourceDestinationJourneyDate(source, destination, journeyDate); 
