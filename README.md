@@ -3,6 +3,10 @@
 This Web-application will let the user to Sign-In into the portal and let the User to search available buses for particular destination. User can book the tickets for the journeys and user has a flexibility to cancel the ticket at anytime. 
 
 
+# 💡  ER Reservation
+
+![ER Diagram](ER%20Bus%20Reservation.png)
+
 
 ## Tech Stacks Used
 - Java
@@ -37,7 +41,3 @@ This Web-application will let the user to Sign-In into the portal and let the Us
    <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-dsc/events/spring-boot-1_5zDxm9B.jpg" alt="git" width="60" height="60" />
    
 </p>
-
-# 💡  ER Reservation
-
-![ER Diagram]()
