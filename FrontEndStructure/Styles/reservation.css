@@ -1,0 +1,125 @@
+/* body{
+    background-image: url("https://www.zoomcar.com/img/bg-desktop.png");
+    background-repeat: no-repeat;
+    background-size: 1500px 650px;
+    background-attachment: scroll;
+} */
+
+.navbar{
+    margin: -9px;
+    padding: -1px;
+    height: 80px;
+    background-color:  rgb(51, 15, 109);
+    
+}
+.innavbar{
+    width: 1300px;
+    height: 80px;
+    margin: auto;
+    display: flex;
+    gap: 40px;
+    align-items: flex-end;
+    justify-content: end;
+}
+.innavbar>p{
+    color: white;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.heading{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 50px;
+    color: rgb(51, 15, 109);
+}
+
+.source{
+    justify-content: center;
+    font-family: sans-serif;
+    color: rgb(51, 15, 109);
+    font-size: 30px;
+    font-weight: bolder;
+    line-height: 50px;
+    
+}
+.main{
+    display: flex;
+    /* border: 1px solid; */
+    height: 400px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 140px;
+}
+.main1{
+    width:600px;
+    /* border: 1px solid; */
+}
+.main2{
+    /* border: 1px solid; */
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+.main2>img{
+    height: 280px;
+}
+#source{
+    width:250px;
+    border-radius: 20px;
+    height: 30px;
+    margin-left: 150px;
+    border: 0;
+    border: 3px solid rgb(51, 15, 109);
+    padding-left: 20px;
+    color:  rgb(51, 15, 109);
+}
+
+#destination{
+    width:250px;
+    border-radius: 20px;
+    height: 30px;
+    margin-left: 87px;
+    border: 0;
+    border: 3px solid rgb(51, 15, 109);
+    padding-left: 20px;
+    color:  rgb(51, 15, 109);
+}
+#doj{
+    width:250px;
+    border-radius: 20px;
+    height: 30px;
+    margin-left: 25px;
+    border: 0;
+    border: 3px solid rgb(51, 15, 109);
+    padding-left: 20px;
+    font-size: 16px;
+    color:  rgb(51, 15, 109);
+    cursor: pointer;
+    /* padding-right: 30px; */
+}
+#submit{
+    margin-top: 30px;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    color: white;
+    background-color: rgb(51, 15, 109) ;
+    border: 0;
+    font-size: large;
+    cursor: pointer;
+}
+#submit:hover{
+    transition: 0.5s all ease-in-out;
+    transform: scale(1.1);
+}
+
+#bus{
+    height: 150px;
+    text-align: center;
+}
