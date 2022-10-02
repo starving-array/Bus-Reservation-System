@@ -7,5 +7,6 @@ import com.reservation.model.Bus.Bus;
 
 @Repository
 public interface BusDao extends JpaRepository<Bus, Integer> {
-
+	
+	public Bus findByBusNoPlate(String string);
 }

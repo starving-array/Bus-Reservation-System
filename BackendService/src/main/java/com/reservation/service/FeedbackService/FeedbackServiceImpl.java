@@ -33,7 +33,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public Feedback viewFeedBack(int feedbackid) throws FeedBackException {
+	public Feedback viewFeedBack(Integer feedbackid) throws FeedBackException {
 		Optional<Feedback> feedOpt = feedDao.findById(feedbackid);
 		if (feedOpt.isPresent()) {
 			return feedOpt.get();

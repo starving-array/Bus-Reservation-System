@@ -10,7 +10,7 @@ public interface FeedbackService {
 
 	public Feedback updateFeedBack(Feedback feedback) throws FeedBackException;
 
-	public Feedback viewFeedBack(int feedbackid) throws FeedBackException;
+	public Feedback viewFeedBack(Integer feedbackid) throws FeedBackException;
 
 	public List<Feedback> viewAllFeedBack() throws FeedBackException;
 

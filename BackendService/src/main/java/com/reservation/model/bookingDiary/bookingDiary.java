@@ -1,5 +1,7 @@
-package com.reservation.model.User;
+package com.reservation.model.bookingDiary;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,34 +15,28 @@ import com.reservation.model.reservation.Reservation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
+public class bookingDiary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer userLoginId;
+	private Integer bookingDiaryId;
+	private LocalDateTime journeyDate_bookingDiary;
 
-	private String UserName;
-	private String password;
-	private String firstName;
-	private String LastName;
-	private Long contact;
-	@JsonIgnore
-	private Double wallet;
+	private Integer bus_id;
 
-	private String email;
+	private Integer seatBooked; // for the current day
+	private Integer seatAvaliable;
 
-//	@JsonIgnore
-//	@OneToOne(mappedBy = "wallet_user")
-//	private Wallet user_wallet;
+	private Integer travel_route_id;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "reservation_User")
-	private List<Reservation> user_reservation;
-
+	@JsonIgnore	
+	@OneToMany
+	private List<Reservation> listOfUserTravellingList = new ArrayList<>();
 }

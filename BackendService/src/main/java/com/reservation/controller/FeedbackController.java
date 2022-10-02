@@ -1,5 +1,8 @@
 package com.reservation.controller;
 
-public class FeedbackController {
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FeedbackController{
 
 }
