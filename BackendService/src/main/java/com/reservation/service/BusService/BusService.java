@@ -26,6 +26,5 @@ public interface BusService {
 
 	public List<Bus> viewAllBus() throws BusException;
 
-	public List<Bus> getBusListByRouteId(Integer id) throws BusException;
 
 }

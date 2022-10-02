@@ -16,6 +16,7 @@ import com.reservation.exceptions.bookingException;
 import com.reservation.model.Bus.Bus;
 import com.reservation.model.Route.Route;
 import com.reservation.model.bookingDiary.bookingDiary;
+import com.reservation.repository.BusDao;
 import com.reservation.repository.RouteDao;
 import com.reservation.service.BusService.BusService;
 import com.reservation.service.bookingDiary.bookingDiaryService;
@@ -27,7 +28,7 @@ public class RouteServiceImpl implements RouteService {
 	private RouteDao routeDao;
 
 	@Autowired
-	private BusService dao;
+	private BusDao dao;
 
 	@Autowired
 	private bookingDiaryService bookingdao;
@@ -78,7 +79,11 @@ public class RouteServiceImpl implements RouteService {
 
 	@Override
 	public Route viewRoute(Integer routeId) throws RouteException {
-		Optional<Route> routeExistence = routeDao.findById(routeId);
+		Integer routeId2 = routeDao.getRouteIdBySourceDestination("Haldia", "Kolkata"); 
+		if(routeId2==null) {
+			throw new RouteException("This is null id");
+		}
+		Optional<Route> routeExistence = routeDao.findById(routeId2);
 		if (routeExistence.isPresent()) {
 			return routeExistence.get();
 		} else {
@@ -118,7 +123,7 @@ public class RouteServiceImpl implements RouteService {
 		
 		} else {
 
-			List<Bus> listOfBus = dao.getBusListByRouteId(routeId); // get all the buses registered and ready for this route given by user
+			List<Bus> listOfBus = dao.getBusByRouteId(routeId); // get all the buses registered and ready for this route given by user
 
 			if (listOfBus.size() == 0) {
 				throw new BusException("No buses avaliable now from " + source + " to " + destination + " for "

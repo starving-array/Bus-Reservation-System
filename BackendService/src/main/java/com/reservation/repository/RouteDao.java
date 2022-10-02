@@ -14,6 +14,6 @@ public interface RouteDao extends JpaRepository<Route, Integer> {
 	public Route findByRouteTo(String routeTo);
 	
 	
-	@Query("select r.routeId from Route r where r.routeTo=?1 and r.routeFrom=?2")
+	@Query("select r.routeId from Route r where r.routeFrom=?1 and  r.routeTo=?2")
 	public Integer getRouteIdBySourceDestination(String source, String destination);
 }

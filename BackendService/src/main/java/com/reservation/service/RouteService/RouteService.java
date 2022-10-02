@@ -20,8 +20,10 @@ public interface RouteService {
 	public Route viewRoute(Integer routeId) throws RouteException;
 
 	public List<Route> viewAllRoute() throws RouteException;
+		
 
 	// user search 
 	public List<bookingDiary> getRouteIdbySourceDestinationJourneyDate(String source, String destination, LocalDate date) throws RouteException, BusException, bookingException;
 
+	
 }

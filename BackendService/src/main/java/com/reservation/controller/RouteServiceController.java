@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,7 +63,7 @@ public class RouteServiceController {
 	@GetMapping("/search/{source}/{destination}/{JourneyDate}")
 	public ResponseEntity<List<bookingDiary>> getRouteIdbySourceDestinationJourneyDate(
 			@PathVariable("source") String source, @PathVariable("destination") String destination,
-			@PathVariable("JourneyDate") LocalDate journeyDate)
+			@PathVariable("JourneyDate")@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate journeyDate)
 			throws RouteException, BusException, bookingException {
 		List<bookingDiary> list = rService.getRouteIdbySourceDestinationJourneyDate(source, destination, journeyDate);
 		return new ResponseEntity<List<bookingDiary>>(list, HttpStatus.OK);

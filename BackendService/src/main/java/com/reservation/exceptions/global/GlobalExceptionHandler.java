@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.reservation.exceptions.BusException;
 import com.reservation.exceptions.FeedBackException;
@@ -18,7 +19,18 @@ import com.reservation.exceptions.UserException;
 public class GlobalExceptionHandler {
 
 	
-	
+	@ExceptionHandler(NoHandlerFoundException.class)
+	public ResponseEntity<ErrorFormatDetails> NoExceptionHandler(NoHandlerFoundException se, WebRequest req){
+		
+		
+		ErrorFormatDetails err= new ErrorFormatDetails();
+			err.setTimestamp(LocalDateTime.now());
+			err.setMessage(se.getMessage());
+			err.setDetails(req.getDescription(false));
+				
+		return new ResponseEntity<ErrorFormatDetails>(err, HttpStatus.NOT_FOUND);
+		
+	}
 	
 	
 	@ExceptionHandler(BusException.class)

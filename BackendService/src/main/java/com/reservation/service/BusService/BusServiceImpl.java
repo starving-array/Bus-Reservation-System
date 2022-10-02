@@ -29,7 +29,7 @@ public class BusServiceImpl implements BusService {
 		Bus existBus = dao.findByBusNoPlate(bus.getBusNoPlate());
 		if (existBus != null) {
 			throw new BusException("This bus already registered with us");
-		} else {	
+		} else {
 			Route newRoute = new Route();
 			newRoute.setDistance(bus.getBus_route().getDistance());
 			newRoute.setRouteFrom(bus.getBus_route().getRouteFrom());
@@ -65,7 +65,7 @@ public class BusServiceImpl implements BusService {
 //			if(!bus.getBusNoPlate().equalsIgnoreCase(opt.get().getBusNoPlate())) {
 //				throw new BusException("Please contact customer care to change no plate");
 //			}
-			
+
 			Bus bus2 = opt.get();
 			Route newRoute = new Route();
 			newRoute.setDistance(bus.getBus_route().getDistance());
@@ -152,23 +152,6 @@ public class BusServiceImpl implements BusService {
 	public BusDTO viewBus(Integer busId) throws BusException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public List<Bus> getBusListByRouteId(Integer id) throws BusException {
-		// TODO Auto-generated method stub
-		List<Bus> listOfMatchedBus = dao.findAll();
-		List<Bus> ans = new ArrayList<>();
-		for (int index = 0; index < listOfMatchedBus.size(); index++) {
-			if (listOfMatchedBus.get(index).getBus_route().getRouteId() == id) {
-				ans.add(listOfMatchedBus.get(index));
-			}
-		}
-		if (ans.size() == 0) {
-			throw new BusException("No bus is running for this route. We will get back to you soon");
-		}
-
-		return ans;
 	}
 
 }
