@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Styles/reservation.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="innavbar">
+        <a href="./login.html">
+          <p>SIGN IN</p>
+        </a>
+      </div>
+    </div>
+
+    <h1 class="heading">BUS RESERVATION SYSTEM</h1>
+    <!-- <div id="bus">
+            
+    </div> -->
+
+    <div class="main">
+      <div class="main2">
+        <img
+          src="https://daddyduckinnovationlab.files.wordpress.com/2020/06/bus.gif"
+          alt=""
+        />
+      </div>
+
+      <div class="main1">
+        <form id="form">
+          <label for="source" class="source">Source</label>
+          <input
+            type="text"
+            placeholder="Please Enter Your Source"
+            id="source"
+          />
+          <br />
+          <label for="destination" class="source">Destination</label>
+          <input
+            type="text"
+            placeholder="Please Enter Your Destination"
+            id="destination"
+          />
+          <br />
+          <label for="doj" class="source">Date of Journey</label>
+          <input type="date" id="doj" />
+          <br />
+          <input type="submit" name="" id="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let form = document.getElementById("form");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log("hello");
+
+    let source = document.getElementById("source").value;
+    let destination = document.getElementById("destination").value;
+    let doj = document.getElementById("doj").value;
+    console.log(doj.value);
+
+    //   let url = `http://localhost:6060/route/search/${source}/${destination}/${doj}.json`;
+    // const Http = new XMLHttpRequest();
+    
+    // Http.open("GET", url);
+    // Http.send();
+    // Http.onreadystatechange
+    
+});
+let url = `http://localhost:6060/route/search/haldia/kolkata/2022-10-02`;
+fetch(url)
+  .then(res => {
+    if (!res.ok) {
+      //   console.log(res.status);
+      throw new Error(res.status);
+    }
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((erroe) => console.log(erroe));
+
+  
+</script>
