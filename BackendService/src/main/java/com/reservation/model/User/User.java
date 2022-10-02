@@ -6,7 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
+import com.reservation.model.Wallet.Wallet;
 import com.reservation.model.reservation.Reservation;
 
 import lombok.AllArgsConstructor;
@@ -18,10 +21,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userLoginId;
+	private Integer userLoginId;
 	private String UserName;
 	private String password;
 	private String firstName;
@@ -29,7 +32,8 @@ public class User {
 	private long contact;
 	private String email;
 
-//	private Wallet wallet;
+	private Wallet wallet;
+//	@OneToMany(mappedBy = "reservation")
 	private List<Reservation> reservation;
-	
+
 }
