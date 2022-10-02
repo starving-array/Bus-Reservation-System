@@ -4,16 +4,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.reservation.exceptions.ResvervationException;
-import com.reservation.model.bookingDiary.bookingDiary;
 import com.reservation.model.reservation.Reservation;
 
 public interface ReservationService {
 
-	public Reservation addReservation(bookingDiary diaryLog, Integer noOfSeats) throws ResvervationException;
+	public Reservation addReservation(Integer diaryLog, Integer noOfSeats) throws ResvervationException;
 
 	public Reservation updateReservation(Reservation reservation) throws ResvervationException;
 
-	public Reservation cancleReservation(Reservation reservation) throws ResvervationException;
+	public Reservation cancleReservation(Integer reservationId) throws ResvervationException;
 
 	public Reservation viewReservation(Integer reservationId) throws ResvervationException;
 

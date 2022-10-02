@@ -120,7 +120,8 @@ public class BusServiceImpl implements BusService {
 
 	@Override
 	public List<Bus> viewAllBus() throws BusException {
-		List<Bus> buses = dao.findAll();
+//		List<Bus> buses = dao.findAll();
+		List<Bus> buses = dao.getBusByRouteId(1);
 		if (buses.size() > 0) {
 			return buses;
 		} else {
@@ -151,6 +152,7 @@ public class BusServiceImpl implements BusService {
 	@Override
 	public BusDTO viewBus(Integer busId) throws BusException {
 		// TODO Auto-generated method stub
+
 		return null;
 	}
 

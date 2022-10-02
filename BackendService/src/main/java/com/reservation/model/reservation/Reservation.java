@@ -1,7 +1,6 @@
 package com.reservation.model.reservation;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +36,7 @@ public class Reservation {
 	private Integer reservationId;
 	private String reservationStatus;
 	private LocalDate reservationDate;
-	private LocalTime reservationTime;
+//	private LocalDateTime reservationTime;
 	private LocalDate journeyDate;
 	private Integer noOfSeats;
 	private String source;

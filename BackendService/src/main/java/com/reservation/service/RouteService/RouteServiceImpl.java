@@ -18,8 +18,7 @@ import com.reservation.model.Route.Route;
 import com.reservation.model.bookingDiary.bookingDiary;
 import com.reservation.repository.BusDao;
 import com.reservation.repository.RouteDao;
-import com.reservation.service.BusService.BusService;
-import com.reservation.service.bookingDiary.bookingDiaryService;
+import com.reservation.repository.bookingDiaryDao;
 
 @Service
 public class RouteServiceImpl implements RouteService {
@@ -31,7 +30,7 @@ public class RouteServiceImpl implements RouteService {
 	private BusDao dao;
 
 	@Autowired
-	private bookingDiaryService bookingdao;
+	private bookingDiaryDao bookingdao;
 
 	@Override
 	public Route addRoute(Route route) throws RouteException {
@@ -127,23 +126,27 @@ public class RouteServiceImpl implements RouteService {
 
 			if (listOfBus.size() == 0) {
 				throw new BusException("No buses avaliable now from " + source + " to " + destination + " for "
-						+ journeyDate);
+						+ journeyDate);	
 			} else {
 				// this will hold record for those buses who are already accepted a few booking and registered on the diary
-				selectedBusForUser = getRouteIdbySourceDestinationJourneyDate(source, destination, journeyDate); 
+				selectedBusForUser = bookingdao.getBookingByRouteIdJourneyDate(routeId, journeyDate);
 
 				// need to check if any bus that is able to go to same route is missing from the log book
 				// if missing then register them and then return them to UI so user can choose accordingly
 				// the size for both list above will tell for missing no
 				
-				if (selectedBusForUser.size() != listOfBus.size()) {
+				if (selectedBusForUser.size() < listOfBus.size()) {
 					
-					Set<Integer> set = new HashSet<>();
-					selectedBusForUser.forEach(a -> set.add(a.getBus_id()));
+//					Set<Integer> set = new HashSet<>();
+//
+//					for(int i = 0; i<listOfBus.size(); i++) {
+//						set.add(selectedBusForUser.get(i).getBus_id());
+//					}
 
 					for (int i = 0; i < listOfBus.size(); i++) {
-						if (!set.contains(listOfBus.get(i).getBusId())) {
-							// match found
+//						if (!set.contains(listOfBus.get(i).getBusId())) {
+//							// match found
+//						}
 							// add to log book and also to the list for UI
 							bookingDiary booking = new bookingDiary();
 							booking.setJourneyDate_bookingDiary(journeyDate);
@@ -151,15 +154,14 @@ public class RouteServiceImpl implements RouteService {
 							booking.setSeatBooked(0);
 							booking.setSeatAvaliable(listOfBus.get(i).getSeats());
 							booking.setTravel_route_id(routeId);
-							bookingdao.addBookingDiaryData(booking);
+							bookingdao.save(booking);
 							selectedBusForUser.add(booking);
-						}
 					}
 				}
-				return selectedBusForUser;
 			}
 
 		}
+		return selectedBusForUser;
 
 	}
 

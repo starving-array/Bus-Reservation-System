@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,17 +29,17 @@ public class ReservationServiceController {
 	@Autowired
 	private ReservationService rDao;
 
-	@PostMapping("/reservation/{seat}")
-	public ResponseEntity<Reservation> bookReservation(@RequestBody bookingDiary data,
+	@PostMapping("/reservation/{diaryId}/{seat}")
+	public ResponseEntity<Reservation> bookReservation(@PathVariable("diaryId") Integer data,
 			@PathVariable("seat") Integer noofSeat) throws UserException, ResvervationException {
 		Reservation bookingData = rDao.addReservation(data, noofSeat);
 		return new ResponseEntity<Reservation>(bookingData, HttpStatus.OK);
 	}
 
-	@PutMapping("/cancel")
-	public ResponseEntity<Reservation> cancelReservation(@RequestBody Reservation reservation)
+	@PutMapping("/cancel/{id}")
+	public ResponseEntity<Reservation> cancelReservation(@PathVariable("id") Integer reservation)
 			throws ResvervationException {
-		Reservation r = rDao.updateReservation(reservation);
+		Reservation r = rDao.cancleReservation(reservation);
 		return new ResponseEntity<Reservation>(r, HttpStatus.OK);
 	}
 
@@ -49,14 +50,14 @@ public class ReservationServiceController {
 	}
 
 	@GetMapping("/view")
-	public ResponseEntity<List<Reservation>> viewAllReservation(@RequestBody Integer id) throws ResvervationException {
+	public ResponseEntity<List<Reservation>> viewAllReservation() throws ResvervationException {
 		List<Reservation> reservation = rDao.viewAllReservation();
 		return new ResponseEntity<List<Reservation>>(reservation, HttpStatus.OK);
 	}
 
 	@GetMapping("/viewByDate/{date}")
-	public ResponseEntity<List<Reservation>> viewAllReservationByDate(@PathVariable("date") LocalDate date)
-			throws ResvervationException {
+	public ResponseEntity<List<Reservation>> viewAllReservationByDate(
+			@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) throws ResvervationException {
 		List<Reservation> reservation = rDao.getAllReservation(date);
 		return new ResponseEntity<List<Reservation>>(reservation, HttpStatus.OK);
 	}

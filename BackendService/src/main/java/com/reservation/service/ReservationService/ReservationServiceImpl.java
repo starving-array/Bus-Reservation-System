@@ -1,7 +1,6 @@
 package com.reservation.service.ReservationService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,18 +38,20 @@ public class ReservationServiceImpl implements ReservationService {
 	// ********************************************************************
 
 	@Override
-	public Reservation addReservation(bookingDiary diaryLog, Integer noOfSeaats) throws ResvervationException {
-		if (diaryLog == null) {
-			throw new ResvervationException("Please select one bus to book");
-		}
+	public Reservation addReservation(Integer bdiaryId, Integer noOfSeaats) throws ResvervationException {
+		Optional<bookingDiary> opt23 =  diaryDao.findById(bdiaryId);
+		bookingDiary diaryLog = opt23.get();
+//		if (diaryLog == null) {
+//			throw new ResvervationException("Please select one bus to book");
+//		}
 		if (diaryLog.getSeatAvaliable() < noOfSeaats) {
 			throw new ResvervationException("This bus has less number of seats than you want. Please look other buses");
 		}
 
 		Reservation newReservation = new Reservation();
 		newReservation.setReservationStatus("booked");
-		newReservation.setReservationDate(LocalDateTime.now().toLocalDate());
-		newReservation.setReservationTime(LocalDateTime.now().toLocalTime());
+		newReservation.setReservationDate(LocalDate.now());
+//		newReservation.setReservationTime(LocalTime);
 		newReservation.setJourneyDate(diaryLog.getJourneyDate_bookingDiary());
 
 		// get route detail with route id
@@ -69,6 +70,7 @@ public class ReservationServiceImpl implements ReservationService {
 		newReservation.setPriceWithoutTax(price);
 		newReservation.setTax("18%");
 		newReservation.setPriceWithTax(taxPrice);
+		newReservation.setRefund(0.0);
 
 		// feedback will be added directly from feedback after journey complete
 //		Feedback feedback = new Feedback();
@@ -85,10 +87,9 @@ public class ReservationServiceImpl implements ReservationService {
 		Optional<bookingDiary> optDiary = diaryDao.findById(diaryLog.getBookingDiaryId());
 		bookingDiary diaryToAdd = optDiary.get(); // this is current log for that bus in log database
 		// temporary seat allign== sonnar selection will be avaliable
-		Integer lastSeat = bus.getSeats() - diaryToAdd.getSeatAvaliable() + 1;
-
-		diaryToAdd.setSeatAvaliable(diaryToAdd.getSeatAvaliable() - noOfSeaats);
-		diaryToAdd.setSeatBooked(diaryLog.getSeatBooked() + noOfSeaats);
+//		Integer lastSeat = bus.getSeats() - diaryToAdd.getSeatAvaliable() + 1;
+//		diaryToAdd.setSeatAvaliable(diaryToAdd.getSeatAvaliable() - noOfSeaats);
+//		diaryToAdd.setSeatBooked(diaryLog.getSeatBooked() + noOfSeaats);
 
 //		for (int i = 0; i < noOfSeaats; i++) {
 //			newReservation.getSeatNumbers().add("A" + lastSeat + i);
@@ -96,9 +97,9 @@ public class ReservationServiceImpl implements ReservationService {
 
 		// user id need to be attach to the reservation
 		// from login current user module
-		User user = new User(); // dummy user
-		newReservation.setReservation_User(user);
-		user.getUser_reservation().add(newReservation);
+//		User user = new User(); // dummy user
+//		newReservation.setReservation_User(user);
+//		user.getUser_reservation().add(newReservation);
 
 		// bus
 		// a feedback added to reservation+++++++++++++++++++++++++++++++
@@ -127,9 +128,9 @@ public class ReservationServiceImpl implements ReservationService {
 	// ********************************************************************
 
 	@Override
-	public Reservation cancleReservation(Reservation reservation) throws ResvervationException {
+	public Reservation cancleReservation(Integer reservationId) throws ResvervationException {
 		// Reservation state from active to inactive, modification needed after
-		Optional<Reservation>  opt= dao.findById(reservation.getReservationId());
+		Optional<Reservation>  opt= dao.findById(reservationId);
 		if(opt.isPresent()) {
 			Reservation reservationExist = opt.get();
 			String resStatu = reservationExist.getReservationStatus();
