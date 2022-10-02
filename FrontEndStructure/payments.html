@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payments</title>
+  
+   
+<Style>
+body {
+    font-family: Arial;
+    background-color: white;
+}
+
+/* Style the tab */
+#tabtab{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+}
+.tab {
+  overflow: hidden;
+  /* border: 2px solid black; */
+  background-color: white;
+
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content:space-evenly;
+  
+  /* padding: 10px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* width: fit-content; */
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: rgb(255, 255, 255);
+  float: left;
+  border: 2px solid rgb(255, 255, 255);
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color:rgb(83, 83, 221);
+  /* padding-left: 5px; */
+  /* padding-right: 5px; */
+  /* width: 20%; */
+  font-weight: bold;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color:blue;
+  color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+}
+
+#pay{
+    border: 1px solid black;
+    width: fit-content;
+    /* padding: 10px; */
+    height: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    margin: auto;
+    color: white;
+    font-weight: bolder;
+    background-color:blue ;
+
+}
+#pay:hover{
+    /* background-color: crimson; */
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid rgb(255, 255, 255);;
+}
+
+.makepayent{
+    /* border: 1px solid red; */
+    width: fit-content;
+    margin: auto;
+    justify-content: center;
+}
+#wallet,#card{
+    width: 90%;
+    margin: auto;
+   
+}
+#walletdata,#cardpay{
+    border: 1px solid black;
+    width: 100%;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+#method{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.icons{
+    /* border: 1px solid red; */
+    width: fit-content;
+    margin: auto;
+}
+.col-md-7{
+    /* border: 1px solid red; */
+    margin: auto;
+    width: 50%;
+}
+
+.cardpayments{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+}
+.pmpage{
+    border: 1px solid black;
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+</Style>
+</head>
+<body>
+<div class="pmpage">
+    <div class="make">
+        <div class="makepayent">
+            <h1 style="color: blue;">Make Payment</h1>
+            <p style="font-weight: bold;">Total Price : <span id="amount"></span></p>
+            <p style="font-weight: bold;">Route details: <span id="route"> </span></p>
+            <p style="font-weight: bold;">Bus details: <span id="bus"> </span></p>
+        </div>
+    </div>
+    <!-- Tab links -->
+<div id="tabtab">
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'wallet')"id="defaultOpen">wallet</button>
+        <button class="tablinks" onclick="openCity(event, 'card')">card</button>
+    </div>
+</div>
+<!-- Tab content -->
+  <div id="wallet" class="tabcontent">
+    <div id="walletdata">
+        <br>
+        <div id="method"><span id="method">Wallet Payment</span></div><br>
+        <div id="cardholdername" class="cardpayments">
+            <div><span style="font-weight: bold;">Total wallet balance:</span></div>
+            <div><span style="font-weight: bold;" id="balance"></span></div>
+        </div><br>
+        <div id="cardholdername" class="cardpayments">
+            <div><span style="font-weight: bold;">Total Price :</span></div>
+            <div><span style="font-weight: bold;" id="price">Price</span></span></div>
+        </div><br>
+        <div id="done"></div><br>
+    </div>
+  </div>
+  
+    <div id="card" class="tabcontent  col-md-7">
+        <div class="left border" id="cardpay"><br>
+            <div id="method"><span id="method">Card Payment</span></div><br>
+            <div class="row">
+                <div class="icons">
+                    <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+                    <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png"/>
+                    <img src="https://img.icons8.com/color/48/000000/maestro.png"/>
+                </div>
+            </div>
+            <form class="from" if="fr">
+                <div id="cardholdername" class="cardpayments">
+                    <div><span>Name:</span></div>
+                    <div><input id="name" placeholder="Linda Williams"></div>
+                    
+                </div><br>
+                <div id="cardnumber" class="cardpayments">
+                    <div> <span>Card Number:</span></div>
+                    <div><input id="carnumber" placeholder="0125 6780 4567 9909"></div>
+                </div><br>
+                <div id="cardnumber" class="cardpayments">
+                    <div ><span>Expiry date:</span></div>
+                    <div><input style="width: 100%;margin: auto;margin-right: 26px;" type="month" id="expdate" placeholder="YY/MM"  required></div> 
+                </div><br>
+                <div id="cardnumber" class="cardpayments">
+                    <div ><span>CVV:</span></div>
+                    <div><input type="" id="cvv" placeholder="" ></div> 
+                </div><br>
+                <div id="pay" class="paycard">
+                    <p>Make Payments</p>
+                </div><br>
+            </form>
+        </div>  
+                            
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function openCity(evt, payment) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(payment).style.display = "block";
+     
+      
+      evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+
+
+
+    let balance=100;
+    let price=90;
+    let from="Patna";
+    let destination="Kota";
+    let busdeatils="Patna kota Bus , Bus No ptnKota-12"
+    // wallet
+    document.getElementById("balance").innerHTML=balance
+    document.getElementById("price").innerHTML=price
+    document.getElementById("amount").innerHTML=price;
+    document.getElementById("route").innerHTML=from+" to "+destination;
+    document.getElementById("bus").innerHTML=busdeatils
+    if(balance<price){
+        document.getElementById("done").innerHTML="* Does not have sufficent money <br> * Please Select Other Payment Option"
+        document.getElementById("done").style.color = "#ff0000";
+
+    }else{
+       let div=document.createElement("div")
+       let p=document.createElement('p')
+       p.innerText="Make Payments"
+       div.setAttribute("id","pay")
+       div.append(p)
+       document.querySelector("#done").append(div)
+
+       document.querySelector("#pay").addEventListener("click",function(){
+            balance=balance-price;
+             // window.location.href=""
+       })
+    }
+
+    let cards= JSON.parse(localStorage.getItem("card"))|| [];  
+    document.querySelector(".paycard").addEventListener("click",function(){
+        let name=document.getElementById("name").value;
+        let cardnumber=document.getElementById("carnumber").value;
+        let expdate=document.getElementById("expdate").value
+        let cvv=document.getElementById("cvv").value
+
+        let obj={
+            name:name,
+            cardnumber:cardnumber,
+            expdate:expdate,
+            cvv:cvv
+        }
+        if(cardnumber.length!=16){
+            window.alert("please enter valid card Number")
+            if(cvv.length!=3){
+                window.alert("card is Not deccline")
+            }
+        }else{
+            cards.push(obj)
+            localStorage.setItem("card",JSON.stringify(cards))
+             // window.location.href=""
+        }
+       
+    })
+    console.log(cards)
+    
+
+
+</script>
