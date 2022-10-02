@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+ }
+ body::-webkit-scrollbar {
+    display: none;
+ }
+ #navbar{
+    margin-bottom: 20px;
+}
+#sign{
+    height: auto;
+    width: 40%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 40px;
+}
+#name, #number, #email, #password, #submit{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 60px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+}
+h2{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 30px;
+}
+.grey{
+    color: grey;
+    text-align: center;
+    margin-bottom: 30px;
+}
+#submit{
+    background-color: rgb(51, 15, 109);
+    color: white;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+span>a{
+    color: grey;
+}
