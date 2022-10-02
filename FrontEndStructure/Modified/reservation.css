@@ -20,16 +20,62 @@
     gap: 40px;
     align-items: flex-end;
     justify-content: end;
-}
-.innavbar>p{
-    color: white;
-    font-family: sans-serif;
-    font-size: 18px;
-    font-weight: bold;
+    align-items: center;
     cursor: pointer;
 }
-
-
+.innavbar>div>img{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+}
+.dropbtn {
+    color: white;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(51, 15, 109);
+    min-width: fit-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -45px;
+    
+    
+}
+.dropdown-content>a{
+    display: block;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 40px;
+}
+.dropdown-content>a:nth-child(1){
+    margin-top: 16px;
+}
+.dropdown-content>a:hover{
+    color: rgb(51, 15, 109);
+    border: 1px solid rgb(51, 15, 109);
+    background-color: white;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.mybookings{
+    width: 100px;
+    border: 1px solid;
+}
 .heading{
     text-align: center;
     font-family: sans-serif;
