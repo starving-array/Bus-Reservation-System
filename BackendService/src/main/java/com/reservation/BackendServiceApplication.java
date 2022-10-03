@@ -27,7 +27,7 @@ public class BackendServiceApplication {
 	}
 
 	private ApiInfo apiDetails() {
-		return new ApiInfo("Bus Reservation System", "Sample api", "1.0", "Freee",
+		return new ApiInfo("Bus Reservation Hybrid System", "Sample api", "1.0", "Freee",
 				new springfox.documentation.service.Contact("hilarious group", "#", "a@b.com"), "API l",
 				"http://javabrains.io", Collections.emptyList());
 	}
