@@ -41,3 +41,16 @@ This Web-application will let the user to Sign-In into the portal and let the Us
    <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-dsc/events/spring-boot-1_5zDxm9B.jpg" alt="git" width="60" height="60" />
    
 </p>
+
+# Features
+
+- Data Authentication and Validation for all the users (Admin and Member)
+- REST API documentation using swagger puglins
+
+## User API Features
+
+- User can login in the application and update their information using their username, password and Mobile Number.
+- User can search for the route to book reservation from a particular source to destination.
+- User can give the feedback of the reservation once the journey is completed.
+
+
