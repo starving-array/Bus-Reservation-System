@@ -5,7 +5,8 @@ This Web-application will let the user to Sign-In into the portal and let the Us
 
 # 💡  ER Reservation
 
-![ER Diagram](ER%20Reservation.png)
+![ER Reservation](https://user-images.githubusercontent.com/101421706/205488201-7eec98b4-b854-4614-8b88-5902bb8766a5.png)
+
 
 
 ## Tech Stacks Used
